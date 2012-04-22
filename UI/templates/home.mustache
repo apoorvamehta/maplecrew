@@ -14,20 +14,21 @@
 			<h1>Your Interests</h1>
 			<a href="#">+ add interests</a>
 		</header>
-
 		<div class="content">
-			{{#interests}}
-			<div class="box">
-				<div class="picframe">
-					<img src="{{img}}" class="pic">
+			<div class="masonry">
+				{{#interests}}
+				<div class="box">
+					<div class="picframe">
+						<img src="{{img}}" class="pic">
+					</div>
+					<div class="caption">
+						<a href="#">{{caption}}</a>
+					</div>
 				</div>
-				<div class="caption">
-					<a href="#">{{caption}}</a>
-				</div>
-			</div>
-			{{/interests}}
+				{{/interests}}
 			
 
+			</div>
 		</div>
 
 	</section>
