@@ -10,6 +10,7 @@ $ml = new MustacheLoader(dirname(__FILE__).'/templates');
 
 echo $m->render($ml["header"], array());
 echo $m->render($ml["top"], array());
+echo $m->render($ml["home"], array());
 echo $m->render($ml["footer"], array());
 
 
