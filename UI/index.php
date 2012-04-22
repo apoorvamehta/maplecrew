@@ -9,8 +9,9 @@ $m = new Mustache();
 $ml = new MustacheLoader(dirname(__FILE__).'/templates');
 
 
-$data = array("img"=>"http://photos-h.ak.fbcdn.net/hphotos-ak-ash3/556524_10101142755271083_1229271_63317478_922457948_a.jpg", "caption"=>"Tonya");
-for($i=0;$i<100;$i++) $c['interests'][] = $data;
+$data[0] = array("img"=>"http://photos-h.ak.fbcdn.net/hphotos-ak-ash3/556524_10101142755271083_1229271_63317478_922457948_a.jpg", "caption"=>"Tonya");
+$data[1] = array("img"=>"http://photos-a.ak.fbcdn.net/hphotos-ak-ash3/561876_10101142759208193_1229271_63317497_829744965_a.jpg", "caption"=>"Victoria");
+for($i=0;$i<100;$i++) $c['interests'][] = $data[rand(0,1)];
 
 
 echo $m->render($ml["header"], array());
