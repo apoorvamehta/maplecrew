@@ -10,6 +10,9 @@
 		height:100%;
 		position:fixed;
 		z-index:2;
+		header {
+			border-bottom:1px solid #f4f6f9;
+		}
 	}
 	.interests {
 		width: 62%;
@@ -18,10 +21,15 @@
 		position:fixed;
 		left:38%;
 		z-index:1;
+		header {
+			border-bottom:1px solid #e4eaf2;
+			.box-shadow(0px 1px 0px rgba(256,256,256, 0.7));
+		}
 	}
 	header {
 		padding:@pad;
 		.clearfix();
+		
 		h1 {
 			font-size: 15px;
 			color: #8c95a1;
