@@ -1,21 +1,35 @@
 .page_container {
+	@pad: 10px;
 	width:100%;
 	position:relative;
 	height:100%;
-}
-.feed {
-	width: 38%;
-	border-right:1px solid #D3DCEA;
-	.box-shadow(0px 0px 5px rgba(119,147,189,0.28));
-	height:100%;
-	position:fixed;
-	z-index:2;
-}
-.interests {
-	width: 62%;
-	background-color:#f4f6f9;
-	height:100%;
-	position:fixed;
-	left:38%;
-	z-index:1;
+	.feed {
+		width: 38%;
+		border-right:1px solid #D3DCEA;
+		.box-shadow(0px 0px 5px rgba(119,147,189,0.28));
+		height:100%;
+		position:fixed;
+		z-index:2;
+	}
+	.interests {
+		width: 62%;
+		background-color:#f4f6f9;
+		height:100%;
+		position:fixed;
+		left:38%;
+		z-index:1;
+	}
+	header {
+		padding:@pad;
+		.clearfix();
+		h1 {
+			font-size: 15px;
+			color: #8c95a1;
+			text-shadow: 0px 1px 0px #fff;
+			float:left;
+		}
+		a {
+			float:right;
+		}
+	}
 }
