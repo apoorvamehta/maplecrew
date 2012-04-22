@@ -32,9 +32,19 @@
 	<script>
 	  $(function(){
 
-	    $('#container').masonry({
+	    
+	
+		var $container = $('#content');
+		
+		$container.masonry({
 	      itemSelector: '.box'
 	    });
+		
+		$container.imagesLoaded( function(){
+		  $container.masonry({
+		    itemSelector : '.box'
+		  });
+		});
 
 	  });
 	</script>
