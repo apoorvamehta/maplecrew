@@ -61,6 +61,10 @@
 			'overlayOpacity' : 0.6,
 			'showNavArrows' : false
 		});
+		
+		$('#fancybox-content').live("click", function() {
+			$(".fancybox").fancybox.next();
+		});
 
 	  });
 	</script>
