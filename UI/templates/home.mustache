@@ -19,10 +19,10 @@
 				{{#interests}}
 				<div class="box">
 					<div class="picframe">
-						<a title="{{name}} - {{caption}}" href="{{img_big}}" class="fancybox" rel="interests"><img src="{{img}}" class="pic"></a>
+						<a title="{{#from}}{{name}}{{/from}}   {{name}}" href="{{source}}" class="fancybox" rel="interests"><img src="{{picture}}" class="pic"></a>
 					</div>
 					<div class="caption">
-						<a href="#">{{name}}</a> {{caption}}
+						<a href="#">{{#from}}{{name}}{{/from}}</a> {{name}}
 					</div>
 				</div>
 				{{/interests}}
