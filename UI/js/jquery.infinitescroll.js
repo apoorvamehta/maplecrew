@@ -698,6 +698,7 @@
 
     event.special.smartscroll = {
         setup: function () {
+			console.log($(this));
             $(this).bind("scroll", event.special.smartscroll.handler);
         },
         teardown: function () {
