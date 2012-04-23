@@ -8,20 +8,18 @@ class PictureFetcher
 	end
 
 	def perform
-		interests = REDIS.smembers("interests:#{user_id}")
+		interests = REDIS.smembers("interests:#{@user_id}")
+		token = REDIS.hget("user:#{@user_id}","token")
+		results = Parallel.map(interests, :in_threads=>interests.size){|i| fetch_and_store_pictures(i, token)}
 	end
 
-	def fetch_and_store_pictures(user_id, token)
-		key = "picture_timesort:#{user_id}"
-
-		# REDIS.zcount("picture_timesort:1229271","-inf","inf")
-		# REDIS.zrange("picture_timesort:1229271", 0,5,{withscores: true})
-
+	def fetch_and_store_pictures(interest_id, token)
+		key = "picture_timesort:#{interest_id}"
 		if REDIS.llen(key) != 0
 			puts "ENTRIES ALREADY PRESENT FOR USER - NOT RE-STORING ANY PICS"
 			return
 		end
-		url = "https://graph.facebook.com/#{user_id}/photos?access_token=#{token}"
+		url = "https://graph.facebook.com/#{interest_id}/photos?access_token=#{token}"
 		body = get_page(url)
 		list = JSON.parse(body)
 		while true
@@ -39,6 +37,26 @@ class PictureFetcher
 	 			list = JSON.parse(body)
 	 		end
 		end
+	end
+
+	def get_page(url)
+	    begin
+		    if (url == nil)
+		       return nil
+		    end
+			curl = Curl::Easy.new
+			startTime = Time.now
+			curl.timeout = 50
+			curl.url = url
+			curl.perform
+			endTime = Time.now
+			return curl.body_str
+	   rescue => e
+	     puts "Error while getting page #{url} - Error #{e}"
+	   rescue Timeout::Error => e
+	     puts "Timeout while getting page #{url} - Error #{e}"
+	   end
+	   return nil
 	end
 
 end

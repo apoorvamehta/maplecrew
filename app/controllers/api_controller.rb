@@ -15,7 +15,7 @@ class ApiController < ApplicationController
     limit = 25
     user_id = "122608475"
     interests = REDIS.smembers("interests:#{user_id}")
-    interests = [1229271]
+    # interests = [1229271]
 
     rv = []
     interests.each do |i|
@@ -43,14 +43,12 @@ class ApiController < ApplicationController
 
   def add_interests
     user_id = "122608475"
-    interest_ids = params[:ids].split(',') rescue []
-
+    interest_ids = JSON.parse(params[:ids]) rescue []
     REDIS.pipelined {
       interest_ids.each do |i|
         REDIS.sadd("interests:#{user_id}", i)
       end
     }
-
     PictureFetcher.fetch(user_id)
   end
 
