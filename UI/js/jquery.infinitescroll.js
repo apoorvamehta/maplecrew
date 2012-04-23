@@ -126,6 +126,7 @@
 
             // Set the path to be a relative URL from root.
             opts.path = this._determinepath(path);
+			console.log(opts.path);
 
             // contentSelector is 'page fragment' option for .load() / .ajax() calls
             opts.contentSelector = opts.contentSelector || this.element;
@@ -221,9 +222,9 @@
                 // page= is used in drupal too but second page is page=1 not page=2:
                 // thx Jerod Fritz, vladikoff
                 if (path.match(/^(.*?page=)1(\/.*|$)/)) {
-					console.log("in");
+					this._debug('in');
                     path = path.match(/^(.*?page=)1(\/.*|$)/).slice(1);
-					console.log(path);
+					this._debug(path);
                     return path;
                 } else {
                     this._debug('Sorry, we couldn\'t parse your Next (Previous Posts) URL. Verify your the css selector points to the correct A tag. If you still get this error: yell, scream, and kindly ask for help at infinite-scroll.com.');
@@ -501,7 +502,8 @@
 	                box = $(opts.contentSelector).is('table') ? $('<tbody/>') : $('<div/>');
 
 	                desturl = path.join(opts.state.currPage);
-
+					console.log(desturl);
+					
 	                method = (opts.dataType == 'html' || opts.dataType == 'json') ? opts.dataType : 'html+callback';
 	                if (opts.appendCallback && opts.dataType == 'html') method += '+callback'
 
