@@ -15,14 +15,16 @@ $data[0] = array("img"=>"http://photos-h.ak.fbcdn.net/hphotos-ak-ash3/556524_101
 $data[1] = array("img"=>"http://photos-a.ak.fbcdn.net/hphotos-ak-ash3/561876_10101142759208193_1229271_63317497_829744965_a.jpg", "img_big"=>"http://photos-a.ak.fbcdn.net/hphotos-ak-ash3/s720x720/561876_10101142759208193_1229271_63317497_829744965_n.jpg", "name"=>"Tonya", "caption"=>"test 123...");
 for($i=0;$i<100;$i++) $c['interests'][] = $data[rand(0,1)];
 
-if($_REQUEST['use_api'] || 1) {
-	//$c['interests'] = callAPI("board", array("index"=>0));
-	$c['interests'] = json_decode(file_get_contents("boardjson.txt"), true);
-	var_dump($c);
-	exit;
-}
 if($_REQUEST['page']) $c['page'] = $_REQUEST['page']+1;
 else $c['page'] = 1;
+
+if($_REQUEST['use_api'] || 1) {
+	$c['interests'] = callAPI("board", array("index"=>$c['page']-1));
+	//$c['interests'] = json_decode(file_get_contents("boardjson.txt"), true);
+	//var_dump($c);
+	//exit;
+}
+
 
 
 //routes
