@@ -35,6 +35,7 @@
 	<script type="text/javascript" src="/UI/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 	
 	<script type="text/javascript" src="/UI/js/jquery.infinitescroll.js"></script>
+	<script type="text/javascript" src="/UI/js/behaviors/local.js"></script>
 	
 	<script>
 	  $(document).ready(function() {
@@ -59,7 +60,7 @@
 				nextSelector : '#page-nav a',
 				itemSelector : '.box',
 				debug : true,
-				//localMode    : true,
+				behavior    : 'local',
 				loading: {
 					finishedMsg: 'No more pages to load.',
 					img: 'http://i.imgur.com/6RMhx.gif'
