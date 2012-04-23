@@ -2,7 +2,7 @@
 
 function callAPI($call, $data) {
 	
-	$call = API_PATH.$call."?access_token=".$_COOKIE['access_token'];
+	$call = API_PATH.$call."?access_token=".$_COOKIE['access_token']."&";
 	
 	foreach($data as $k=>$v) $call .= $k."=".$v."&";
 	
