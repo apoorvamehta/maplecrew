@@ -7,7 +7,7 @@ function callAPI($call, $data) {
 	foreach($data as $k=>$v) $call .= $k."=".$v."&";
 	
 	$res = file_get_contents($call);
-	$res = json_decode($res);
+	$res = json_decode($res, true);
 	
 	return $res;
 }
