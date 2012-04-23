@@ -6,7 +6,7 @@ require_once 'libs/MustacheLoader.php';
 require_once 'libs/functions.php';
 
 //Globals
-define("API_PATH", "http://localhost:3000/api/");
+define("API_PATH", "http://maplecrew.herokuapp.com/api/");
 $m = new Mustache();
 $ml = new MustacheLoader(dirname(__FILE__).'/templates');
 
