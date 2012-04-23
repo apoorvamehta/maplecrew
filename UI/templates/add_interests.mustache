@@ -1,0 +1,16 @@
+<div class="pick_interests">
+	{{#interests}}
+	<ul class="thumbnails">
+		<li class="span3">
+			<div class="thumbnail">
+			  <img src="http://graph.facebook.com/{{id}}/picture?type=large" alt="">
+			  <div class="caption">
+			    <h5>{{name}}</h5>
+			    <p>{{relationship_status}} | {{location.name}}</p>
+			    <p><a href="#" class="btn btn-primary">Add</a></p>
+			  </div>
+			</div>
+		</li>
+	</ul>
+	{{/interests}}
+</div>
