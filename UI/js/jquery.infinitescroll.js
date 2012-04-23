@@ -56,7 +56,7 @@
 		pathParse: undefined,
 		dataType: 'html',
 		appendCallback: true,
-		bufferPx: 40,
+		bufferPx: 500,
 		errorCallback: function () { },
 		infid: 0, //Instance ID
 		pixelsFromNavToBottom: undefined,
@@ -216,6 +216,7 @@
                 path = path.match(/^(.*?)2(.*?$)/).slice(1);
 
             } else {
+				console.log("in");
 
                 // page= is used in drupal too but second page is page=1 not page=2:
                 // thx Jerod Fritz, vladikoff
