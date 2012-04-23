@@ -9,6 +9,7 @@ gem 'curb'
 gem 'pg'
 gem 'delayed_job', '2.1.4'
 gem 'redis'
+gem 'parallel'
 
 # Gems used only for assets and not required
 # in production environments by default.
