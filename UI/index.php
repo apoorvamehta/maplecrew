@@ -18,6 +18,8 @@ for($i=0;$i<100;$i++) $c['interests'][] = $data[rand(0,1)];
 if($_REQUEST['use_api'] || 1) {
 	//$c['interests'] = callAPI("board", array("index"=>0));
 	$c['interests'] = json_decode(file_get_contents("boardjson.txt"), true);
+	var_dump($c);
+	exit;
 }
 if($_REQUEST['page']) $c['page'] = $_REQUEST['page']+1;
 else $c['page'] = 1;
