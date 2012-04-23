@@ -34,6 +34,14 @@ switch($_REQUEST['section']) {
 		//$c['interests'] = callAPI("board", array("limit"=>100, "index"=>0));
 		echo $m->render($ml["home"], $c);
 		break;
+
+	case "add_interests":
+		//$c['interests'] = callAPI("board", array("limit"=>100, "index"=>0));
+		echo $m->render($ml["header"], array());
+		//echo $m->render($ml["top"], array());
+		echo $m->render($ml["add_interests"], $c);
+		echo $m->render($ml["footer"], array());
+		break;
 	
 	default:
 		//$c['interests'] = callAPI("board", array("limit"=>100, "index"=>0));
