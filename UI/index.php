@@ -31,7 +31,7 @@ switch($_REQUEST['section']) {
 		$data = callAPI("female_friends", array());
 		$c['interests'] = array();
 		foreach($data as $i) $c['interests'][] = json_decode($i, true);
-		var_dump($c['interests']);
+		//var_dump($c['interests']);
 		//exit;
 		echo $m->render($ml["header"], array());
 		//echo $m->render($ml["top"], array());
