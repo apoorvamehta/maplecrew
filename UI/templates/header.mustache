@@ -34,6 +34,8 @@
 	<script type="text/javascript" src="/UI/js/fancybox/jquery.easing-1.4.pack.js"></script>
 	<script type="text/javascript" src="/UI/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 	
+	<script type="text/javascript" src="/UI/js/jquery.infinitescroll.min.js"></script>
+	
 	<script>
 	  $(document).ready(function() {
 
@@ -50,6 +52,24 @@
 		    itemSelector : '.box'
 		  });
 		});
+		
+		$container.infinitescroll(
+			{
+				navSelector  : '#page-nav',
+				nextSelector : '#page-nav a',
+				itemSelector : '.box',
+				loading: {
+					finishedMsg: 'No more pages to load.',
+					img: 'http://i.imgur.com/6RMhx.gif'
+				}
+			},
+			
+			// trigger Masonry as a callback
+			function( newElements ) {
+				var $newElems = $( newElements );
+				$container.masonry( 'appended', $newElems );
+			}
+		);
 		
 		$(".fancybox").fancybox({
 			'transitionIn'	:	'elastic',

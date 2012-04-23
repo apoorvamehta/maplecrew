@@ -20,11 +20,24 @@ if($_REQUEST['use_api']) {
 }
 
 
-echo $m->render($ml["header"], array());
-//echo $m->render($ml["top"], array());
+//routes
+switch($_REQUEST['section']) {
+	
+	case "interests" :
+		//$c['interests'] = callAPI("board", array("limit"=>100, "index"=>0));
+		echo $m->render($ml["home"], $c);
+		break;
+	
+	default:
+		//$c['interests'] = callAPI("board", array("limit"=>100, "index"=>0));
+		echo $m->render($ml["header"], array());
+		//echo $m->render($ml["top"], array());
+		echo $m->render($ml["home"], $c);
+		echo $m->render($ml["footer"], array());
+		break;
+}
 
-echo $m->render($ml["home"], $c);
-echo $m->render($ml["footer"], array());
+
 
 
 
