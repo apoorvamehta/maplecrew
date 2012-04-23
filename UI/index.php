@@ -29,7 +29,7 @@ switch($_REQUEST['section']) {
 
 	case "add_interests":
 		$c['interests'] = callAPI("female_friends", array());
-		//var_dump($c['interests']);
+		var_dump($c['interests']);
 		//exit;
 		echo $m->render($ml["header"], array());
 		//echo $m->render($ml["top"], array());
