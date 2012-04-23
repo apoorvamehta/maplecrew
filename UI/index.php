@@ -29,8 +29,8 @@ switch($_REQUEST['section']) {
 
 	case "add_interests":
 		$data = callAPI("female_friends", array());
-		foreach($c['interests'] as $i) $c['interests'][] = json_decode($i, true);
-		var_dump($c['interests']);
+		foreach($data as $i) $c['interests'][] = json_decode($i, true);
+		//var_dump($c['interests']);
 		//exit;
 		echo $m->render($ml["header"], array());
 		//echo $m->render($ml["top"], array());
