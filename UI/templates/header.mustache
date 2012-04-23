@@ -70,9 +70,11 @@
 			
 			// trigger Masonry as a callback
 			function( newElements ) {
-				var $newElems = $( newElements );
-				console.log($newElems);
-				$container.masonry( 'appended', $newElems );
+				var $newElems = $( newElements ).css({ opacity: 0 });
+				$newElems.imagesLoaded(function(){
+			    	$newElems.animate({ opacity: 1 });
+					$container.masonry( 'appended', $newElems );
+				});
 			}
 		);
 		
