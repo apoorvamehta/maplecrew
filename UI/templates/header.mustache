@@ -54,7 +54,7 @@
 		  });
 		});
 		
-		$('.content').infinitescroll(
+		$container.infinitescroll(
 			{
 				navSelector  : '#page-nav',
 				nextSelector : '#page-nav a',
@@ -72,7 +72,7 @@
 			function( newElements ) {
 				var $newElems = $( newElements );
 				console.log($newElems);
-				//$container.masonry( 'appended', $newElems );
+				$container.masonry( 'appended', $newElems );
 			}
 		);
 		
