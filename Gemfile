@@ -5,8 +5,10 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
+gem 'curb'
 gem 'pg'
-
+gem 'delayed_job', '2.1.4'
+gem 'redis'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,6 +19,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
