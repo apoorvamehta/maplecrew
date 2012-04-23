@@ -18,25 +18,19 @@ for($i=0;$i<100;$i++) $c['interests'][] = $data[rand(0,1)];
 if($_REQUEST['page']) $c['page'] = $_REQUEST['page']+1;
 else $c['page'] = 1;
 
-if($_REQUEST['use_api'] || 1) {
-	$c['interests'] = callAPI("board", array("index"=>$c['page']-1));
-	//$c['interests'] = json_decode(file_get_contents("boardjson.txt"), true);
-	//var_dump($c);
-	//exit;
-}
-
-
 
 //routes
 switch($_REQUEST['section']) {
 	
 	case "interests" :
-		//$c['interests'] = callAPI("board", array("limit"=>100, "index"=>0));
+		$c['interests'] = callAPI("board", array("index"=>$c['page']-1));
 		echo $m->render($ml["home"], $c);
 		break;
 
 	case "add_interests":
-		//$c['interests'] = callAPI("board", array("limit"=>100, "index"=>0));
+		$c['interests'] = callAPI("female_friends", array());
+		var_dump($c['interests']);
+		exit;
 		echo $m->render($ml["header"], array());
 		//echo $m->render($ml["top"], array());
 		echo $m->render($ml["add_interests"], $c);
@@ -44,7 +38,8 @@ switch($_REQUEST['section']) {
 		break;
 	
 	default:
-		//$c['interests'] = callAPI("board", array("limit"=>100, "index"=>0));
+		$c['interests'] = callAPI("board", array("index"=>$c['page']-1));
+		
 		echo $m->render($ml["header"], array());
 		//echo $m->render($ml["top"], array());
 		echo $m->render($ml["home"], $c);
