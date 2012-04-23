@@ -18,7 +18,7 @@ for($i=0;$i<100;$i++) $c['interests'][] = $data[rand(0,1)];
 if($_REQUEST['use_api']) {
 	//$c['interests'] = callAPI("board", array("limit"=>100, "index"=>0));
 	$c['interests'] = json_decode(file_get_contents("boardjson.txt"), true);
-	//var_dump($data);
+	//var_dump($c);
 	
 	//exit;
 }
