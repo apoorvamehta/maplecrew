@@ -344,12 +344,15 @@
         },
 
         _nearbottom: function infscr_nearbottom() {
-
+			
+			console.log("in");
+			
             var opts = this.options,
 	        	pixelsFromWindowBottomToBottom = 0 + $(document).height() - (opts.binder.scrollTop()) - $(window).height();
 
             // if behavior is defined and this function is extended, call that instead of default
 			if (!!opts.behavior && this['_nearbottom_'+opts.behavior] !== undefined) {
+				console.log("out");
 				return this['_nearbottom_'+opts.behavior].call(this);
 			}
 
