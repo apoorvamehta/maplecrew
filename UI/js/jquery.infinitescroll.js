@@ -216,12 +216,14 @@
                 path = path.match(/^(.*?)2(.*?$)/).slice(1);
 
             } else {
-				console.log("in");
+				
 
                 // page= is used in drupal too but second page is page=1 not page=2:
                 // thx Jerod Fritz, vladikoff
                 if (path.match(/^(.*?page=)1(\/.*|$)/)) {
+					console.log("in");
                     path = path.match(/^(.*?page=)1(\/.*|$)/).slice(1);
+					console.log(path);
                     return path;
                 } else {
                     this._debug('Sorry, we couldn\'t parse your Next (Previous Posts) URL. Verify your the css selector points to the correct A tag. If you still get this error: yell, scream, and kindly ask for help at infinite-scroll.com.');
