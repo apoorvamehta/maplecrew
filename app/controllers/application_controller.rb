@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :decrypt_userid, :except => :login
   def decrypt_userid
   	begin
-	  	user = params[:user] || "Pna5QTNNDcAqdy8A6HISfQ==%0A"
+	  	user = params[:user_token] || "Pna5QTNNDcAqdy8A6HISfQ==%0A"
 	    @user_id = decrypt(user)
 	rescue
 		@user_id = 122608475

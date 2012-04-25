@@ -8,7 +8,7 @@ class ApiController < ApplicationController
     token = get_access_token(code)
     user_id = find_or_create_user(token)
     # render :json => user_id.to_json
-    render :json => encrypt(user_id)
+    render :json => {:user_token => encrypt(user_id)}.to_json
   end
 
   def board
