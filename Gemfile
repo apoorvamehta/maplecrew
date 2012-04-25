@@ -10,7 +10,7 @@ gem 'pg'
 gem 'delayed_job', '2.1.4'
 gem 'redis'
 gem 'parallel'
-
+gem 'encryptor'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

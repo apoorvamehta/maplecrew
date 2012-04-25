@@ -7,14 +7,15 @@ class ApiController < ApplicationController
     puts "Code:#{params[:code]}"
     token = get_access_token(code)
     user_id = find_or_create_user(token)
-    render :json => user_id.to_json
+    # render :json => user_id.to_json
+    render :json => encrypt(user_id)
   end
 
   def board
     index = params['index'].to_i
     limit = 25
-    user_id = "122608475"
-    interests = REDIS.smembers("interests:#{user_id}")
+    # user_id = "122608475"
+    interests = REDIS.smembers("interests:#{@user_id}")
     # interests = [1229271]
 
     rv = []
@@ -33,23 +34,42 @@ class ApiController < ApplicationController
   end
 
   def female_friends
-    user_id = "122608475"
-    if REDIS.hget("user:#{user_id}","fb_fetch_date").blank?
+    # user_id = "122608475"
+    if REDIS.hget("user:#{@user_id}","fb_fetch_date").blank?
       render :json => "not ready"
     else
-      render :json => REDIS.smembers("female_fbfriends:#{user_id}")
+      render :json => REDIS.smembers("female_fbfriends:#{@user_id}")
     end
   end
 
-  def add_interests
-    user_id = "122608475"
-    interest_ids = JSON.parse(params[:ids]) rescue []
+  def male_friends
+    # user_id = "122608475"
+    if REDIS.hget("user:#{@user_id}","fb_fetch_date").blank?
+      render :json => "not ready"
+    else
+      render :json => REDIS.smembers("male_fbfriends:#{@user_id}")
+    end
+  end
+
+  def add_bros
+    interests = params['bros']
     REDIS.pipelined {
-      interest_ids.each do |i|
-        REDIS.sadd("interests:#{user_id}", i)
+      interests.split(',').each do |i|
+        REDIS.sadd("bros:#{@user_id}", i)
       end
     }
-    PictureFetcher.fetch(user_id)
+    render :json => "cool".to_json
+  end
+
+  def add_interests
+    interests = params['interests']
+    REDIS.pipelined {
+      interests.split(',').each do |i|
+        REDIS.sadd("interests:#{@user_id}", i)
+      end
+    }
+    PictureFetcher.fetch(@user_id)
+    render :json => "cool".to_json
   end
 
   private

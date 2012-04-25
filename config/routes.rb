@@ -7,6 +7,7 @@ Maplecrew::Application.routes.draw do
   match 'api/board' => 'api#board'
   match 'api/female_friends' => 'api#female_friends'
   match 'api/add_interests' => 'api#add_interests'
+  match 'api/male_friends' => 'api#male_friends'
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
